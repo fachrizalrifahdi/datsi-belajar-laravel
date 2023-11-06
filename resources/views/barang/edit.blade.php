@@ -6,8 +6,9 @@
 
 @section('content')
     <div class="container">
-        <form method="PUT" action="{{ route('barang.update', $barang->id) }}">
+        <form method="POST" action="{{ route('barang.update', $barang->id) }}">
             @csrf
+            @method('PUT')
             <div class="row">
                 <div class="col-md-12">
                     <label for="nama_barang">Nama Barang</label>
