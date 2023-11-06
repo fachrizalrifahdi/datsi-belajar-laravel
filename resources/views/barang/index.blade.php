@@ -25,8 +25,12 @@
                         <td>{{ $barang->qty }}</td>
                         <td>
                             <a href="{{ route('barang.show', $barang->id) }}" class="btn btn-primary">Lihat</a>
-                            <a href="" class="btn btn-success">Edit</a>
-                            <a href="" class="btn btn-danger">Hapus</a>
+                            <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-success">Edit</a>
+                            <form action="{{ route('barang.destroy', $barang->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                 @empty
