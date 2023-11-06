@@ -6,13 +6,13 @@
 
 @section('content')
     <div class="container">
-        <form method="PUT" action="{{ url('/barang') }}">
+        <form method="PUT" action="{{ route('barang.update', $barang->id) }}">
             @csrf
             <div class="row">
                 <div class="col-md-12">
                     <label for="nama_barang">Nama Barang</label>
                     <input type="text" name="nama_barang" class="form-control @error('nama_barang') is-invalid @enderror"
-                        value="{{ old('nama_barang') }}" />
+                        value="{{ old('nama_barang') ?? $barang->nama_barang }}" />
                     @error('nama_barang')
                         <div class="text-sm text-danger">
                             <p>{{ $message }}</p>
@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <label for="qty">Qty</label>
                     <input type="number" name="qty" class="form-control @error('qty') is-invalid @enderror"
-                        value="{{ old('qty') }}" />
+                        value="{{ old('qty') ?? $barang->qty }}" />
                     @error('qty')
                         <div class="text-sm text-danger">
                             <p>{{ $message }}</p>
